@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { NavLinks } from "@/constants"
+import AuthProviders from "./AuthProviders";
 const Navbar = () => {
   const session = {};
 
@@ -34,13 +35,13 @@ const Navbar = () => {
                   <>
                     UserPhoto 
 
-                    <Link href="/">
+                    <Link href="/create">
                         Share Work
                     </Link>
                   </>
                 ) : 
                 (
-                  <></>
+                  <AuthProviders />
                 )
               }
         </div>
