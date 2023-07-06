@@ -35,7 +35,17 @@ const Navbar = async () => {
               {
                 session?.user? (
                   <>
-                    UserPhoto 
+                    {
+                      session?.user?.image 
+                      &&
+                      <Image 
+                        src={session.user.image}
+                        width={40}
+                        height={40}
+                        className="rounded-full"
+                        alt={session.user.name}
+                      />
+                    }
 
                     <Link href="/create">
                         Share Work
