@@ -6,7 +6,7 @@ import jsonwebtoken from "jsonwebtoken"
 import { JWT } from "next-auth/jwt"
 import { signIn } from "next-auth/react";
 import { SessionInterface , UserProfile} from "@/common.types";
-import { getUser } from "./action";
+import { createUser, getUser } from "./action";
 
 export const authOptions : NextAuthOptions = {
     providers : [
@@ -38,6 +38,11 @@ export const authOptions : NextAuthOptions = {
                 //if they don't exist, create them
                 if(!userExists.user){
                     //await create User
+                    await createUser(
+                        user.name,
+                        user.email,
+                        user.image
+                    )
                 }
 
                 return true
