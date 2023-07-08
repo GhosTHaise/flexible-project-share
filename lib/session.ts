@@ -29,6 +29,24 @@ export const authOptions : NextAuthOptions = {
     },
     callbacks : {
         async session({ session }){
+            const email = session?.user?.email as string
+
+            try {
+                const data = await getUser(email) as {user : UserProfile}
+
+                const newSession = {
+                    ...session,
+                    user : {
+                        ...session.user,
+                        ...data?.user
+                    }
+                }
+
+                return newSession;
+            } catch (error) {
+                console.log("Error retrieving user data : ",error);
+                return session;
+            }
             return session;
         },
         async signIn({ user } : {user : AdapterUser | User}){
@@ -39,9 +57,9 @@ export const authOptions : NextAuthOptions = {
                 if(!userExists.user){
                     //await create User
                     await createUser(
-                        user.name,
-                        user.email,
-                        user.image
+                        user.name as string,
+                        user.email as string,
+                        user.image as string
                     )
                 }
 
