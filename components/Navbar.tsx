@@ -39,7 +39,7 @@ const Navbar = async () => {
                   <>
                     <ProfileMenu session={session}/>
 
-                    <Link href="/create">
+                    <Link href="/create-project">
                         Share Work
                     </Link>
                    
