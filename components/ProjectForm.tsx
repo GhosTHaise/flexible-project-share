@@ -1,8 +1,19 @@
-import React from 'react'
+import { SessionInterface } from "@/common.types"
 
-const ProjectForm = () => {
+type Props = {
+  type : String,
+  session : SessionInterface
+};
+
+const ProjectForm = ({type,session} : Props) => {
+  const handleSubmit = (e : React.FormEvent) => {};
   return (
-    <div>ProjectForm</div>
+    <form
+      onSubmit={handleSubmit}
+      className="flexStart form"
+    >
+
+    </form>
   )
 }
 

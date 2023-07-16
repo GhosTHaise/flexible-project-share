@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef , ReactNode } from "react";
+import React, { useCallback, useRef , ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -14,8 +14,10 @@ const Modal = ({children} : {children : ReactNode}) => {
         router.push("/");
     },[router]);
 
-    const handleClick = useCallback(() => {
-
+    const handleClick = useCallback((e : React.MouseEvent) => {
+        if((e.target === overlay.current) && onDismiss){
+            onDismiss();
+        }
     },[onDismiss,overlay]);
      
     return (
