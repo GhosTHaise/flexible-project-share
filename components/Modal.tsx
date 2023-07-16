@@ -10,10 +10,14 @@ const Modal = ({children} : {children : ReactNode}) => {
     const wrapper = useRef<HTMLDivElement>(null);
     const router = useRouter();
     
-    const handleClick = () => {};
-    const onDismiss = () => {
+    const onDismiss = useCallback(() => {
         router.push("/");
-    };
+    },[router]);
+
+    const handleClick = useCallback(() => {
+
+    },[onDismiss,overlay]);
+     
     return (
     <div 
         ref={overlay}
