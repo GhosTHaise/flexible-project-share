@@ -19,7 +19,10 @@ const ProjectForm = ({type,session} : Props) => {
   }
   const form = {
     image : "",
-    title : ""
+    title : "",
+    description : "",
+    liveSiteUrl : "",
+    githubUrl : ""
   };
   return (
     <form
@@ -51,6 +54,32 @@ const ProjectForm = ({type,session} : Props) => {
             />
           }
         </div>
+        <FormField
+          title="Title"
+          state={form.title}
+          setState={(value) => handleStateChange("title",value)}
+          placeholder="Flexible"
+        />
+        <FormField
+          title="Description"
+          state={form.description}
+          setState={(value) => handleStateChange("description",value)}
+          placeholder="Showcase and discover remarkable devdeloper projects."
+        />
+        <FormField
+        type="url"
+          title="Website Url"
+          state={form.liveSiteUrl}
+          setState={(value) => handleStateChange("liveSiteUrl",value)}
+          placeholder="fitiavanasambatraportfolio.netlify.app"
+        />
+        <FormField
+          type="url"
+          title="Github Url"
+          state={form.githubUrl}
+          setState={(value) => handleStateChange("githubUrl",value)}
+          placeholder="https://github.com/GhosTHaise"
+        />
         <FormField
           title="Title"
           state={form.title}
