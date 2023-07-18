@@ -37,6 +37,8 @@ const Modal = ({children} : {children : ReactNode}) => {
                 height={17}
                 alt="close"
             />
+            
+            
         </button>
 
 

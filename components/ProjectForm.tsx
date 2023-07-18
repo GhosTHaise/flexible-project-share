@@ -3,6 +3,7 @@ import { SessionInterface } from "@/common.types"
 import { create } from "domain";
 import { ChangeEvent } from "react";
 import Image from "next/image";
+import FormField from "./FormField";
 
 type Props = {
   type : String,
@@ -37,7 +38,7 @@ const ProjectForm = ({type,session} : Props) => {
             id="image"
             accept="image/*"
             required={type === 'create'}
-            className="handleChangeImage"
+            className="form_image-input"
             onChange={handleChangeImage}
           />
           {
