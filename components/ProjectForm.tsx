@@ -1,7 +1,7 @@
 "use client"
 import { SessionInterface } from "@/common.types"
 import { create } from "domain";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import FormField from "./FormField";
 import { categoryFilters } from "@/constants";
@@ -19,14 +19,15 @@ const ProjectForm = ({type,session} : Props) => {
   const handleStateChange = (fieldname : String,value : String) => {
     
   }
-  const form = {
+  const [form, setForm] = useState({
     image : "",
     title : "",
     description : "",
     liveSiteUrl : "",
     githubUrl : "",
     category : ""
-  };
+  });
+  
   return (
     <form
       onSubmit={handleSubmit}
@@ -83,12 +84,7 @@ const ProjectForm = ({type,session} : Props) => {
           setState={(value) => handleStateChange("githubUrl",value)}
           placeholder="https://github.com/GhosTHaise"
         />
-        <FormField
-          title="Title"
-          state={form.title}
-          setState={(value) => handleStateChange("title",value)}
-          placeholder="Flexible"
-        />
+
         <CustomMenu 
             title="Category"
             state={form.category}
