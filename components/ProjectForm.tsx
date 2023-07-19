@@ -86,6 +86,12 @@ const ProjectForm = ({type,session} : Props) => {
           setState={(value) => handleStateChange("title",value)}
           placeholder="Flexible"
         />
+        {/*Custom Icon Buttton*/}
+        <div className="flexStart w-full">
+            <button>
+                Create
+            </button>
+        </div>
     </form>
   )
 }
