@@ -4,6 +4,8 @@ import { create } from "domain";
 import { ChangeEvent } from "react";
 import Image from "next/image";
 import FormField from "./FormField";
+import { categoryFilters } from "@/constants";
+import CustomMenu from "./CustomMenu";
 
 type Props = {
   type : String,
@@ -22,7 +24,8 @@ const ProjectForm = ({type,session} : Props) => {
     title : "",
     description : "",
     liveSiteUrl : "",
-    githubUrl : ""
+    githubUrl : "",
+    category : ""
   };
   return (
     <form
@@ -86,10 +89,16 @@ const ProjectForm = ({type,session} : Props) => {
           setState={(value) => handleStateChange("title",value)}
           placeholder="Flexible"
         />
+        <CustomMenu 
+            title="Category"
+            state={form.category}
+            filters={categoryFilters}
+            setState={(value)=>handleStateChange("category",value)}
+        />
         {/*Custom Icon Buttton*/}
         <div className="flexStart w-full">
             <button>
-                Create
+                Create 
             </button>
         </div>
     </form>
