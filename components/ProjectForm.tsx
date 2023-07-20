@@ -26,7 +26,24 @@ const ProjectForm = ({type,session} : Props) => {
 
 
   const handleSubmit = (e : React.FormEvent) => {};
-  const handleChangeImage = (e : ChangeEvent<HTMLInputElement>) => {};
+  const handleChangeImage = (e : ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const file = e.target.files?.[0];
+
+    if(!file) return;
+    if(!file.type.includes('image')){
+      return alert("Please upload an image file !");
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+        const result = reader.result as string;
+        
+        handleStateChange("image",result);
+    }
+  };
   
   const handleStateChange = (fieldname : string,value : string) => {
       setForm((prevState) => (
