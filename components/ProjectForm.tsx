@@ -6,6 +6,7 @@ import Image from "next/image";
 import FormField from "./FormField";
 import { categoryFilters } from "@/constants";
 import CustomMenu from "./CustomMenu";
+import Button from "./Button";
 
 type Props = {
   type : String,
@@ -40,7 +41,7 @@ const ProjectForm = ({type,session} : Props) => {
 
     reader.onload = () => {
         const result = reader.result as string;
-        
+
         handleStateChange("image",result);
     }
   };
@@ -119,9 +120,11 @@ const ProjectForm = ({type,session} : Props) => {
         />
         {/*Custom Icon Buttton*/}
         <div className="flexStart w-full">
-            <button>
-                Create 
-            </button>
+            <Button
+              title="create"
+              type="submit"
+              LeftIcon={isSubmitting ? "" : "/plus.svg"}
+            />
         </div>
     </form>
   )
