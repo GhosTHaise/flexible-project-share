@@ -123,7 +123,8 @@ const ProjectForm = ({type,session} : Props) => {
             <Button
               title="create"
               type="submit"
-              LeftIcon={isSubmitting ? "" : "/plus.svg"}
+              leftIcon={isSubmitting ? "" : "/plus.svg"}
+              isSubmitting={isSubmitting}
             />
         </div>
     </form>
