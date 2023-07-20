@@ -14,11 +14,7 @@ type Props = {
 
 const ProjectForm = ({type,session} : Props) => {
 
-  const handleSubmit = (e : React.FormEvent) => {};
-  const handleChangeImage = (e : ChangeEvent<HTMLInputElement>) => {};
-  const handleStateChange = (fieldname : String,value : String) => {
-    
-  }
+  const [isSubmitting, setisSubmitting] = useState(false);
   const [form, setForm] = useState({
     image : "",
     title : "",
@@ -27,7 +23,20 @@ const ProjectForm = ({type,session} : Props) => {
     githubUrl : "",
     category : ""
   });
+
+
+  const handleSubmit = (e : React.FormEvent) => {};
+  const handleChangeImage = (e : ChangeEvent<HTMLInputElement>) => {};
   
+  const handleStateChange = (fieldname : string,value : string) => {
+      setForm((prevState) => (
+        {
+          ...prevState,
+          [fieldname] : value
+        }
+      ))
+  }
+   
   return (
     <form
       onSubmit={handleSubmit}
