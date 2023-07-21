@@ -26,7 +26,17 @@ const ProjectForm = ({type,session} : Props) => {
   });
 
 
-  const handleSubmit = (e : React.FormEvent) => {};
+  const handleSubmit = (e : React.FormEvent) => {
+    e.preventDefault();
+    setisSubmitting(true);
+    try {
+      if(type = "create"){
+        //create project
+      }
+    } catch (error) {
+      
+    }
+  };
   const handleChangeImage = (e : ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const file = e.target.files?.[0];
