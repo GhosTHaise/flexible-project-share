@@ -41,7 +41,9 @@ export const createUser = (
 }
 export const uploadImage = async (imagePath : string) => {
     try {
-        
+        const response = await fetch(`${serverUrl}/api/upload`,{
+
+        });
     } catch (error) {
         
     }
