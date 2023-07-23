@@ -43,13 +43,15 @@ export const createUser = (
 export const fetchToken = async () => {
     try {
         const response = await fetch(`${serverUrl}/api/auth/token`);
-        return response.json();
+        return await response.json();
     } catch (error) {
         throw error;
     }
 }
 
 export const uploadImage = async (imagePath : string) => {
+    //console.log(imagePath);
+    
     try {
         const response = await fetch(`${serverUrl}/api/upload`,{
             method : "POST",
@@ -77,7 +79,9 @@ export const createNewProject = async (form : ProjectForm,creatorId : string,tok
                 }
             }
         }
-        return makeGraphQlRequest(
+        console.log(variables);
+        
+        return await makeGraphQlRequest(
             createProjectMutation,
             variables
         )

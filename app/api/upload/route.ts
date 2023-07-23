@@ -9,8 +9,8 @@ cloudinary.config({
 });
 
 export async function POST(request : Request){
-    const path = await request.json();
-    console.log(await request.json());
+    const {path }= await request.json();
+    //console.log(await request.json());
 
     if(!path){
         NextResponse.json({
@@ -31,12 +31,17 @@ export async function POST(request : Request){
                 crop : "scale"
             }]
         };
+        console.log("Avant upload");
         const result = await cloudinary.uploader.upload(path,options);
+        console.log("Apres upload");
+        
         return NextResponse.json(
             result,
             {status : 200}
         )
     } catch (error) {
+        console.log("POST Upload=>",error);
+        
         return NextResponse.json(
             {message : error},
             {status : 500}
