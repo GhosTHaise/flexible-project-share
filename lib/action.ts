@@ -39,6 +39,16 @@ export const createUser = (
     }
     return makeGraphQlRequest(createUserMutation,variables);
 }
+
+export const fetchToken = async () => {
+    try {
+        const response = await fetch(`${serverUrl}/api/auth/token`);
+        return response.json();
+    } catch (error) {
+        throw error;
+    }
+}
+
 export const uploadImage = async (imagePath : string) => {
     try {
         const response = await fetch(`${serverUrl}/api/upload`,{
