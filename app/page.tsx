@@ -13,9 +13,9 @@ type ProjectSearch = {
   };
 }
 const Home = async () => {
-  const data = await fetchAllProjects("","") as ProjectSearch;
+  const data = await fetchAllProjects() as ProjectSearch;
   const projectsToDisplay = data?.projectSearch?.edges || [];
-
+  console.log(data)
   if(projectsToDisplay.length === 0){
     return (
       <section className="flexStart flex-col paddings">
