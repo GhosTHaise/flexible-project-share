@@ -49,6 +49,20 @@ const ProjectCard = ({
                     />
                 </div>
             </Link>
+
+            <div className='flexCenter gap-3'>
+                <div className='flexCenter gap-2'>
+                    <Image
+                        src="/hearth.svg"
+                        height={12}
+                        width={13}
+                        alt='Heart'
+                    />
+                    <p className='text-sm'>
+                        525
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
   )
