@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import React from 'react'
+import Image from 'next/image';
 
 type Props = {
     id : string;
@@ -18,7 +20,17 @@ const ProjectCard = ({
 } : Props) => {
   return (
     <div className='flexCenter flex-col rounded-2xl drop-shadow-card'>
-
+        <Link 
+            className='flexCenter group relative w-full h-full'
+            href={`/project/${id}`}>
+                <Image
+                    src={image}
+                    alt="Project Image"
+                    width={414}
+                    height={314}
+                    className='w-full h-full object-cover rounded-2xl'
+                />
+        </Link>
     </div>
   )
 }
