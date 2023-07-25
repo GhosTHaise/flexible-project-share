@@ -47,6 +47,9 @@ const ProjectCard = ({
                         height={24}
                         className='rounded-full'
                     />
+                    <p>
+                        {name}
+                    </p>
                 </div>
             </Link>
 
@@ -54,12 +57,23 @@ const ProjectCard = ({
                 <div className='flexCenter gap-2'>
                     <Image
                         src="/hearth.svg"
-                        height={12}
+                        height={13}
                         width={13}
                         alt='Heart'
                     />
                     <p className='text-sm'>
                         525
+                    </p>
+                </div>
+                <div className='flexCenter gap-2'>
+                    <Image
+                        src="/eye.svg"
+                        height={13}
+                        width={13}
+                        alt='eye'
+                    />
+                    <p className='text-sm'>
+                        5.2k
                     </p>
                 </div>
             </div>
