@@ -1,5 +1,6 @@
+"use client"
 import Link from 'next/link';
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Image from 'next/image';
 
 type Props = {
@@ -18,6 +19,13 @@ const ProjectCard = ({
     avatarUrl,
     userId
 } : Props) => {
+    const [randomLikes, setRandomLikes] = useState(0);
+    const [randomViews, setRandomViews] = useState('');
+
+    useEffect(()=>{
+        setRandomLikes(Math.floor(Math.random() * 10000));
+        setRandomViews(String((Math.floor(Math.random() * 10000) / 1000).toFixed(1)+"k"))
+    },[]);
   return (
     <div className='flexCenter flex-col rounded-2xl drop-shadow-card'>
         <Link 
@@ -62,7 +70,7 @@ const ProjectCard = ({
                         alt='Heart'
                     />
                     <p className='text-sm'>
-                        525
+                        {randomLikes}
                     </p>
                 </div>
                 <div className='flexCenter gap-2'>
@@ -73,7 +81,7 @@ const ProjectCard = ({
                         alt='eye'
                     />
                     <p className='text-sm'>
-                        5.2k
+                        {randomViews}
                     </p>
                 </div>
             </div>
