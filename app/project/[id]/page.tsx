@@ -8,6 +8,10 @@ const Project = async ({params : {id}} : { params : { id : string}}) => {
     const result = await getProjectDetail(id) as {
         project? : ProjectInterface 
     };
+
+    if(!result?.project){
+        return <p>Failed to fetch project information.</p>
+    }
     console.log(result);
     
   return (
