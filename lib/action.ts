@@ -97,7 +97,7 @@ export const fetchAllProjects = async (category? : string ,endcursor? : string) 
     })
 }
 
-export const getProjectDetail = async (id : string) => {
+export const getProjectDetails = async (id : string) => {
     client.setHeader('x-api-key',apiKey);
     return makeGraphQlRequest(
         getProjectByIdQuery,
