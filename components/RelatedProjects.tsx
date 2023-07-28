@@ -44,6 +44,13 @@ const RelatedProjects = async ({
                       alt='project image'
                      
                     />
+                    <div 
+                      className='hidden group-hover:flex related_project-card_title'
+                    >
+                        <p className='w-full '>
+                            {node?.title}
+                        </p>
+                    </div>
                 </Link>
             </div>
           ))
