@@ -1,5 +1,6 @@
 import { UserProfile ,ProjectInterface } from '@/common.types';
 import { getUserProjects } from '@/lib/action';
+import Link from 'next/link';
 import React from 'react'
 
 type Props = {
@@ -15,7 +16,18 @@ const RelatedProjects = async ({
     
     if(filteredProjects?.length === 0) return null;
   return (
-    <div>RelatedProjects</div>
+    <section className='flex flex-col mt-32 w-full'>
+      <div className='flexBetween'>
+        <p>
+          More by {result?.user?.name}
+        </p>
+        <Link
+          href={`/profile/${result?.user?.id}`} 
+          className='text-primary-purple text-base'>
+            View All
+        </Link>
+      </div>
+    </section>
   )
 }
 
