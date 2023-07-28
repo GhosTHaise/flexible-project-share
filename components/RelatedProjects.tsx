@@ -2,6 +2,7 @@ import { UserProfile ,ProjectInterface } from '@/common.types';
 import { getUserProjects } from '@/lib/action';
 import Link from 'next/link';
 import React from 'react'
+import Image from 'next/image';
 
 type Props = {
     userId : string;
@@ -26,6 +27,27 @@ const RelatedProjects = async ({
           className='text-primary-purple text-base'>
             View All
         </Link>
+      </div>
+      <div className='related_projects-grid'>
+        {
+          filteredProjects.map(({node} : {node : ProjectInterface}) => (
+            <div className='flexCenter related_project-card drop-shadow-card'>
+                <Link 
+                  href={`/project/${node?.id}`}
+                  className='flexCenter group relative w-full h-full'
+                  >
+                    <Image
+                      src={node?.image}
+                      width={314}
+                      height={314}
+                      className='w-full h-full object-cover rounded-2xl'
+                      alt='project image'
+                     
+                    />
+                </Link>
+            </div>
+          ))
+        }
       </div>
     </section>
   )
