@@ -1,5 +1,5 @@
 import { ProjectForm } from "@/common.types";
-import { createProjectMutation, createUserMutation, getProjectByIdQuery, getProjectsOfUserQuery, getUserQuery, projectsAllQuery, projectsQuery } from "@/graphql";
+import { createProjectMutation, createUserMutation, deleteProjectMutation, getProjectByIdQuery, getProjectsOfUserQuery, getUserQuery, projectsAllQuery, projectsQuery } from "@/graphql";
 import { GraphQLClient } from "graphql-request";
 
 const isProduction = process.env.NODE_ENV == "production";
@@ -113,5 +113,18 @@ export const getUserProjects = async (id : string,last? : number) => {
             id,
             last
         }
-        )
+        );
+}
+
+export const deleteProject = async (id : string,token : string) => {
+
+    client.setHeader("Authorization" , `Bearer ${token}`);
+    //console.log(typeof id);
+    
+    return makeGraphQlRequest(
+        deleteProjectMutation,
+        {
+            id,
+        }
+        );
 }
