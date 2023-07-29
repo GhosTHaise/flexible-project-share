@@ -1,5 +1,5 @@
 "use client"
-import { SessionInterface } from "@/common.types"
+import { ProjectInterface, SessionInterface } from "@/common.types"
 import { create } from "domain";
 import { ChangeEvent, useState } from "react";
 import Image from "next/image";
@@ -11,20 +11,21 @@ import { createNewProject, fetchToken } from "@/lib/action";
 import { useRouter } from "next/navigation";
 type Props = {
   type : String,
-  session : SessionInterface
+  session : SessionInterface,
+  project? : ProjectInterface
 };
 
-const ProjectForm = ({type,session} : Props) => {
+const ProjectForm = ({type,session,project} : Props) => {
   const router = useRouter();
 
   const [isSubmitting, setisSubmitting] = useState(false);
   const [form, setForm] = useState({
-    image : "",
-    title : "",
-    description : "",
-    liveSiteUrl : "",
-    githubUrl : "",
-    category : ""
+    image : project?.image ||  "",
+    title : project?.title ||  "",
+    description : project?.description ||  "",
+    liveSiteUrl : project?.liveSiteUrl ||  "",
+    githubUrl : project?.githubUrl ||  "",
+    category : project?.category ||  ""
   });
 
 
