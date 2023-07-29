@@ -128,3 +128,16 @@ export const deleteProject = async (id : string,token : string) => {
         }
         );
 }
+
+export const updateProject = async (form : ProjectForm, id : string,token : string) => {
+
+    client.setHeader("Authorization" , `Bearer ${token}`);
+    //console.log(typeof id);
+    
+    return makeGraphQlRequest(
+        deleteProjectMutation,
+        {
+            id,
+        }
+        );
+}
