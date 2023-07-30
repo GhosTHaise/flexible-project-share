@@ -7,7 +7,7 @@ import FormField from "./FormField";
 import { categoryFilters } from "@/constants";
 import CustomMenu from "./CustomMenu";
 import Button from "./Button";
-import { createNewProject, fetchToken } from "@/lib/action";
+import { createNewProject, fetchToken, updateProject } from "@/lib/action";
 import { useRouter } from "next/navigation";
 type Props = {
   type : String,
@@ -37,11 +37,19 @@ const ProjectForm = ({type,session,project} : Props) => {
     const {token} = await fetchToken(); 
 
     try {
-      if(type = "create"){
+      if(type == "create"){
         //create project
+        
           await createNewProject(form,session?.user?.id,token);
 
           router.push("/");
+      }
+      if(type == "edit"){
+        //edit project 
+        
+        await updateProject(form,project?.id as  string,token);
+
+        router.push("/");
       }
     } catch (error) {
           console.log(error);
