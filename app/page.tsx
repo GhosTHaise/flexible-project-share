@@ -14,10 +14,19 @@ type ProjectSearch = {
     }
   };
 }
-const Home = async () => {
-  const data = await fetchAllProjects() as ProjectSearch;
+
+type SearchParams = {
+  category? : string | null;
+}
+
+type Props = {
+  searchParams : SearchParams;
+}
+
+const Home = async ({searchParams : { category}} : Props) => {
+  const data = await fetchAllProjects(category) as ProjectSearch;
   const projectsToDisplay = data?.projectSearch?.edges || [];
-  console.log(data)
+  //console.log(data)
   if(projectsToDisplay.length === 0){
     return (
       <section className="flexStart flex-col paddings">

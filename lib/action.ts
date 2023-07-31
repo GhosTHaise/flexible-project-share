@@ -88,14 +88,19 @@ export const createNewProject = async (form : ProjectForm,creatorId : string,tok
     }
 }
 
-export const fetchAllProjects = async (category? : string ,endcursor? : string) => {
-    client.setHeader('x-api-key',apiKey);
-    let query : string  = (category && endcursor) ? projectsQuery : projectsAllQuery;
-    return makeGraphQlRequest(query,{
-        category,
-        endcursor
-    })
-}
+//export const fetchAllProjects = async (category? : string | null ,endcursor? : string) => {
+//    client.setHeader('x-api-key',apiKey);
+//    let query : string  = projectsQuery;
+//    return makeGraphQlRequest(query,{
+//        category,
+//        endcursor
+//    })
+//}
+export const fetchAllProjects = (category?: string | null, endcursor?: string | null) => {
+    client.setHeader("x-api-key", apiKey);
+  
+    return makeGraphQlRequest(projectsQuery, { category, endcursor });
+  };
 
 export const getProjectDetails = async (id : string) => {
     client.setHeader('x-api-key',apiKey);
