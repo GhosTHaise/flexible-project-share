@@ -30,7 +30,7 @@ const Home = async ({searchParams : { category}} : Props) => {
   if(projectsToDisplay.length === 0){
     return (
       <section className="flexStart flex-col paddings">
-        Categories
+        <Categories />
 
         <p className="no-result-text text-center">No project found, go create some first.</p>
       </section>
