@@ -88,13 +88,13 @@ export const createNewProject = async (form : ProjectForm,creatorId : string,tok
     }
 }
 
-export const fetchAllProjects = async (category? : string | null,endcursor? : string) => {
+export const fetchAllProjects = async (category? : string | null,endCursor? : string) => {
     client.setHeader('x-api-key',apiKey);
-    console.log(category)
+    console.log(category,endCursor)
     let query : string  = (category != null) ? projectsQuery : projectsAllQuery;
     return makeGraphQlRequest(query,{
         category,
-        endcursor
+        endCursor
     })
 }
 
