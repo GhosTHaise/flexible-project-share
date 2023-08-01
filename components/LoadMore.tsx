@@ -16,7 +16,19 @@ const LoadMore = (
 
     const router = useRouter();
     const handleNavigation = (direction : string) => {
+      const currentParams = new URLSearchParams(window.location.search);
 
+      if(direction  == "next" && hasNextPage){
+        currentParams.delete("startCursor");
+        currentParams.set("endCursor",endCursor);
+      }else if(direction == "first" && hasPreviousPage){
+        currentParams.delete("endCursor");
+        currentParams.set("startCursor",endCursor);
+      }
+      const newSearchParams = currentParams.toString();
+      const newPathName = `${window.location.pathname}?${newSearchParams}`;
+       
+      router.push(newPathName);
     }
   return (
     <div 
