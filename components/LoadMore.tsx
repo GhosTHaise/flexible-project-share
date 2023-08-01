@@ -1,5 +1,7 @@
-import React from 'react'
+"use client";
+import { useRouter } from 'next/navigation';
 
+import Button from './Button';
 type Props = {
     startCursor : string;
     endCursor : string;
@@ -11,8 +13,31 @@ const LoadMore = (
     endCursor,
     hasPreviousPage,
     hasNextPage} : Props) => {
+
+    const router = useRouter();
+    const handleNavigation = (direction : string) => {
+
+    }
   return (
-    <div>LoadMore</div>
+    <div 
+      className='w-full flexCenter gap-5 mt-10'>
+      {
+        hasPreviousPage && (
+          <Button
+            title='First Page'
+            handleClick={() => handleNavigation("first")}
+          />
+        )
+      }
+      {
+        hasNextPage && (
+          <Button
+            title='Next'
+            handleClick={() => handleNavigation("next")}
+          />
+        )
+      }
+    </div>
   )
 }
 
