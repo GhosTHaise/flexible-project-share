@@ -1,3 +1,5 @@
+import { UserProfile } from "@/common.types";
+import ProfilePage from "@/components/ProfilePage";
 import { getUserProjects } from "@/lib/action";
 
 type Props = {
@@ -6,9 +8,16 @@ type Props = {
     }
 }
 
-const UserProfile = ({params : {id}} : Props) => {
+const UserProfile = async ({params : {id}} : Props) => {
+    const result = await getUserProjects(id,100) as { user : UserProfile};
+
+    if(!result.user){
+        return <p className="no-result-text">Failed To Fetch User info</p>
+    }
   return (
-    <div>UserProfile</div>
+    <ProfilePage 
+        user={result?.user}
+    />
   )
 }
 
