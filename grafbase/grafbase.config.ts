@@ -1,5 +1,5 @@
 import { g, auth, config } from '@grafbase/sdk'
-
+//force deploy on grafbase
 // @ts-ignore
 const User = g.model('User', {
   name: g.string().length({ min: 2, max: 20 }),
