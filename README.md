@@ -14,3 +14,5 @@ pnpm dev
 
 > Preview :
 ![image](https://arweave.net/UdhVZfEEZXbkO4WCQo-U5GNgJC7-Yl0PLucw-x8mYiU)
+
+You can have a look at the project for yourself at this link:  : [www.flexibleProject.com](https://flexible-project-share.vercel.app/)
